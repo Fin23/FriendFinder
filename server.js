@@ -7,6 +7,9 @@ var express = require("express");
 var exphbs = require("express-handlebars");
 var mysql = require("mysql");
 
+var bodyParser = require('body-parser');
+var path = require('path');
+
 
 // ==============================================================================
 // EXPRESS CONFIGURATION
@@ -18,6 +21,11 @@ var app = express();
 
 // Sets an initial port. We"ll use this later in our listener
 var PORT = process.env.PORT || 8080;
+
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(bodyParser.text());
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
